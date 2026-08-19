@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F7F5;
+    color: #263238;
+    line-height: 1.6;
+}
+header {
+    background-color: #1B5E20;
+    color: white;
+    text-align: center;
+    padding: 45px 20px;
+}
+
+header h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px;
+}
+
+
+
+
+nav {
+    background-color: #2E7D32;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 10px;
+    transition: 0.3s;
+}
+
+
+nav a:hover {
+    background-color: #66BB6A;
+    color: white;
+    border-radius: 5px;
+}
+
+main {
+    width: 95%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+section {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-left: 5px solid #2E7D32;
+    border-radius: 8px;
+}
+
+section h2 {
+    color: #1B5E20;
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+h3 {
+    color: #2E7D32;
+}
+
+ul {
+    padding-left: 25px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+li strong {
+    color: #1B5E20;
+}
+
+.projects {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;
+    min-width: 220px;
+    background-color: #E8F5E9;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #A5D6A7;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #66BB6A;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+aside {
+    background-color: #E8F5E9;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #A5D6A7;
+}
+
+aside h2 {
+    color: #1B5E20;
+    margin-bottom: 15px;
+}
+
+aside p {
+    margin-bottom: 10px;
+}
+
+#contact {
+    border-left-color: #66BB6A;
+}
+
+footer {
+    background-color: #1B5E20;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 5px;
+}
+
+@media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .projects {
+        flex-direction: column;
+    }
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    main {
+        width: 92%;
+    }
+}
