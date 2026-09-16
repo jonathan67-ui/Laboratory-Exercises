@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Inventory Dashboard</title>
 
     <style>
@@ -14,319 +13,287 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f4f6f9;
-            color: #333;
+            background: #f3f7f4;
+            color: #26382c;
         }
 
-        .navbar {
-            background: #198754;
-            color: white;
-            padding: 18px 35px;
+        nav {
+            background: #237a45;
+            padding: 18px 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .navbar h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-
-        .navbar a {
+        nav a {
             color: white;
             text-decoration: none;
-            background: #146c43;
-            padding: 10px 16px;
-            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .brand {
+            font-size: 22px;
+        }
+
+        .nav-button {
+            background: white;
+            color: #237a45;
+            padding: 10px 15px;
+            border-radius: 8px;
         }
 
         .container {
-            width: 92%;
-            max-width: 1250px;
-            margin: 30px auto;
+            width: 86%;
+            max-width: 1200px;
+            margin: 35px auto;
         }
 
-        .alert {
-            background: #d1e7dd;
-            color: #0f5132;
-            padding: 14px;
-            border-radius: 5px;
-            margin-bottom: 20px;
+        h1 {
+            color: #237a45;
         }
 
-        .summary {
+        .cards {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 18px;
+            margin: 25px 0;
         }
 
-        .summary-card {
+        .card,
+        .panel {
             background: white;
-            padding: 22px;
-            border-radius: 8px;
-            border-left: 5px solid #198754;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-radius: 15px;
+            padding: 24px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
         }
 
-        .summary-card h3 {
-            margin: 0 0 10px;
+        .card h3 {
+            color: #68766d;
             font-size: 15px;
-            color: #777;
         }
 
-        .summary-card h2 {
-            margin: 0;
+        .card p {
+            color: #237a45;
             font-size: 28px;
-            color: #198754;
+            font-weight: bold;
+            margin: 0;
         }
 
-        .products-card {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            overflow-x: auto;
-        }
-
-        .products-header {
+        .panel-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .products-header h2 {
-            margin: 0;
-        }
-
-        .add-button {
-            background: #198754;
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 900px;
+            margin-top: 20px;
         }
 
         th,
         td {
-            padding: 13px;
-            border-bottom: 1px solid #ddd;
+            padding: 14px;
+            border-bottom: 1px solid #e4ebe6;
             text-align: left;
         }
 
         th {
-            background: #e9f7ef;
-            color: #146c43;
+            background: #edf5ef;
+            color: #237a45;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 7px;
+            padding: 9px 13px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 13px;
+        }
+
+        .btn-primary {
+            background: #237a45;
+            color: white;
+        }
+
+        .btn-edit {
+            background: #e0efff;
+            color: #1d5f9e;
+        }
+
+        .btn-delete {
+            background: #fee2e2;
+            color: #a12626;
         }
 
         .badge {
-            padding: 5px 9px;
-            border-radius: 4px;
+            padding: 6px 10px;
+            border-radius: 20px;
             font-size: 12px;
             font-weight: bold;
         }
 
-        .badge-danger {
-            background: #f8d7da;
-            color: #842029;
+        .in-stock {
+            background: #d9f5df;
+            color: #176b32;
         }
 
-        .badge-success {
-            background: #d1e7dd;
-            color: #0f5132;
+        .low-stock {
+            background: #fee2e2;
+            color: #a12626;
         }
 
-        .action-button {
-            border: none;
-            color: white;
-            padding: 7px 10px;
-            border-radius: 4px;
-            text-decoration: none;
-            cursor: pointer;
-            font-size: 13px;
+        .alert {
+            background: #d9f5df;
+            color: #176b32;
+            padding: 14px;
+            border-radius: 8px;
+            margin-bottom: 20px;
         }
 
-        .edit-button {
-            background: #ffc107;
-            color: #222;
-        }
-
-        .delete-button {
-            background: #dc3545;
-        }
-
-        .empty {
-            text-align: center;
-            padding: 30px;
-            color: #777;
-        }
-
-        @media (max-width: 900px) {
-            .summary {
+        @media (max-width: 850px) {
+            .cards {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .panel {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 800px;
+            }
         }
 
-        @media (max-width: 600px) {
-            .navbar {
-                padding: 15px;
-            }
-
-            .navbar h1 {
-                font-size: 18px;
-            }
-
-            .container {
-                width: 95%;
-            }
-
-            .summary {
+        @media (max-width: 550px) {
+            .cards {
                 grid-template-columns: 1fr;
             }
 
-            .products-header {
-                gap: 15px;
-                align-items: flex-start;
-                flex-direction: column;
+            nav {
+                padding: 16px 4%;
+            }
+
+            .container {
+                width: 92%;
             }
         }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="{{ route('products.index') }}" class="brand">
+            Tasty Table Inventory
+        </a>
 
-    <div class="navbar">
-        <h1>Inventory Dashboard</h1>
-        <a href="{{ route('products.create') }}">Add Product</a>
-    </div>
+        <a href="{{ route('products.create') }}" class="nav-button">
+            + Add Product
+        </a>
+    </nav>
 
-    <div class="container">
-
+    <main class="container">
         @if(session('success'))
             <div class="alert">
                 {{ session('success') }}
             </div>
         @endif
 
-        <div class="summary">
-            <div class="summary-card">
+        <h1>Inventory Dashboard</h1>
+
+        <div class="cards">
+            <div class="card">
                 <h3>Total Products</h3>
-                <h2>{{ $totalProducts }}</h2>
+                <p>{{ $totalProducts }}</p>
             </div>
 
-            <div class="summary-card">
+            <div class="card">
                 <h3>Total Quantity</h3>
-                <h2>{{ $totalQuantity }}</h2>
+                <p>{{ $totalQuantity }}</p>
             </div>
 
-            <div class="summary-card">
-                <h3>Low Stock Items</h3>
-                <h2>{{ $lowStock }}</h2>
+            <div class="card">
+                <h3>Low Stock</h3>
+                <p>{{ $lowStock }}</p>
             </div>
 
-            <div class="summary-card">
-                <h3>Total Inventory Value</h3>
-                <h2>₱{{ number_format($totalValue, 2) }}</h2>
+            <div class="card">
+                <h3>Total Value</h3>
+                <p>₱{{ number_format($totalValue, 2) }}</p>
             </div>
         </div>
 
-        <div class="products-card">
-            <div class="products-header">
-                <h2>Products from Database</h2>
+        <div class="panel">
+            <div class="panel-header">
+                <h2>Product List</h2>
 
-                <a
-                    class="add-button"
-                    href="{{ route('products.create') }}"
-                >
+                <a href="{{ route('products.create') }}" class="btn btn-primary">
                     + Add Product
                 </a>
             </div>
 
-            @if($products->count() > 0)
-                <table>
-                    <thead>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>SKU</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @forelse($products as $product)
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>SKU</th>
-                            <th>Category</th>
-                            <th>Quantity</th>
-                            <th>Reorder Level</th>
-                            <th>Unit Price</th>
-                            <th>Supplier</th>
-                            <th>Stock Status</th>
-                            <th>Actions</th>
+                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->sku }}</td>
+                            <td>{{ $product->category ?? 'N/A' }}</td>
+                            <td>{{ $product->quantity }}</td>
+                            <td>₱{{ number_format($product->unit_price, 2) }}</td>
+
+                            <td>
+                                @if($product->quantity <= $product->reorder_level)
+                                    <span class="badge low-stock">Low Stock</span>
+                                @else
+                                    <span class="badge in-stock">In Stock</span>
+                                @endif
+                            </td>
+
+                            <td>
+                                <a href="{{ route('products.edit', $product->id) }}"
+                                   class="btn btn-edit">
+                                    Edit
+                                </a>
+
+                                <form action="{{ route('products.destroy', $product->id) }}"
+                                      method="POST"
+                                      style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit"
+                                            class="btn btn-delete"
+                                            onclick="return confirm('Delete this product?')">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
-                    </thead>
-
-                    <tbody>
-                        @foreach($products as $product)
-                            <tr>
-                                <td>{{ $product->id }}</td>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->sku }}</td>
-                                <td>{{ $product->category }}</td>
-                                <td>{{ $product->quantity }}</td>
-                                <td>{{ $product->reorder_level }}</td>
-                                <td>
-                                    ₱{{ number_format($product->unit_price, 2) }}
-                                </td>
-                                <td>{{ $product->supplier }}</td>
-
-                                <td>
-                                    @if($product->quantity <= $product->reorder_level)
-                                        <span class="badge badge-danger">
-                                            Low Stock
-                                        </span>
-                                    @else
-                                        <span class="badge badge-success">
-                                            In Stock
-                                        </span>
-                                    @endif
-                                </td>
-
-                                <td>
-                                    <a
-                                        class="action-button edit-button"
-                                        href="{{ route('products.edit', $product->id) }}"
-                                    >
-                                        Edit
-                                    </a>
-
-                                    <form
-                                        action="{{ route('products.destroy', $product->id) }}"
-                                        method="POST"
-                                        style="display: inline;"
-                                        onsubmit="return confirm('Are you sure you want to delete this product?');"
-                                    >
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button
-                                            type="submit"
-                                            class="action-button delete-button"
-                                        >
-                                            Delete
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            @else
-                <div class="empty">
-                    No products found in the database.
-                </div>
-            @endif
+                    @empty
+                        <tr>
+                            <td colspan="7">No products found.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
-    </div>
-
+    </main>
 </body>
 </html>

@@ -12,14 +12,8 @@ class ProductController extends Controller
         $products = Product::latest()->get();
 
         $totalProducts = Product::count();
-
         $totalQuantity = Product::sum('quantity');
-
-        $lowStock = Product::whereColumn(
-            'quantity',
-            '<=',
-            'reorder_level'
-        )->count();
+        $lowStock = Product::whereColumn('quantity', '<=', 'reorder_level')->count();
 
         $totalValue = Product::selectRaw(
             'SUM(quantity * unit_price) as total'
@@ -45,11 +39,11 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'sku' => 'required|string|max:255|unique:products,sku',
             'description' => 'nullable|string',
-            'category' => 'required|string|max:255',
+            'category' => 'nullable|string|max:255',
             'quantity' => 'required|integer|min:0',
             'reorder_level' => 'required|integer|min:0',
             'unit_price' => 'required|numeric|min:0',
-            'supplier' => 'required|string|max:255',
+            'supplier' => 'nullable|string|max:255',
         ]);
 
         Product::create($validated);
@@ -70,11 +64,11 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'sku' => 'required|string|max:255|unique:products,sku,' . $product->id,
             'description' => 'nullable|string',
-            'category' => 'required|string|max:255',
+            'category' => 'nullable|string|max:255',
             'quantity' => 'required|integer|min:0',
             'reorder_level' => 'required|integer|min:0',
             'unit_price' => 'required|numeric|min:0',
-            'supplier' => 'required|string|max:255',
+            'supplier' => 'nullable|string|max:255',
         ]);
 
         $product->update($validated);
