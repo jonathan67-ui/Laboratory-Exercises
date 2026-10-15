@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "name": "Premium Beef Patties",
+        "sku": "MEAT-001",
+        "category": "Meat & Poultry",
+        "quantity": 152,
+        "unit_price": 120,
+        "reorder_level": 40
+    },
+    {
+        "id": 2,
+        "name": "Cheddar Cheese Slices",
+        "sku": "DAIRY-002",
+        "category": "Dairy & Cheese",
+        "quantity": 222,
+        "unit_price": 15,
+        "reorder_level": 50
+    },
+    {
+        "id": 3,
+        "name": "Brioche Burger Buns",
+        "sku": "GRAIN-003",
+        "category": "Grains & Pasta",
+        "quantity": 35,
+        "unit_price": 22,
+        "reorder_level": 30
+    },
+    {
+        "id": 4,
+        "name": "Italian Spaghetti Pasta",
+        "sku": "GRAIN-004",
+        "category": "Grains & Pasta",
+        "quantity": 99,
+        "unit_price": 45,
+        "reorder_level": 20
+    },
+    {
+        "id": 5,
+        "name": "Fresh Iceberg Lettuce",
+        "sku": "PROD-005",
+        "category": "Produce",
+        "quantity": 25,
+        "unit_price": 60,
+        "reorder_level": 15
+    },
+    {
+        "id": 6,
+        "name": "Fresh Chicken Breasts",
+        "sku": "MEAT-006",
+        "category": "Meat & Poultry",
+        "quantity": 119,
+        "unit_price": 180,
+        "reorder_level": 25
+    },
+    {
+        "id": 7,
+        "name": "Whole Milk Gallons",
+        "sku": "DAIRY-007",
+        "category": "Dairy & Cheese",
+        "quantity": 32,
+        "unit_price": 150,
+        "reorder_level": 15
+    }
+]

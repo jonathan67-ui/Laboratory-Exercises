@@ -1,0 +1,209 @@
+:root {
+    --primary: #2E7D32;
+    --secondary: #1B5E20;
+    --background: #F4F9F4;
+    --text: #112211;
+    --accent: #4CAF50;
+    --light-accent: #E8F5E9;
+    --white: #FFFFFF;
+    --border: #D0E2D0;
+
+    --bs-primary: var(--primary);
+    --bs-primary-rgb: 46, 125, 50;
+    --bs-body-font-family: Arial, sans-serif;
+    --bs-body-color: var(--text);
+    --bs-link-color: var(--primary);
+    --bs-link-hover-color: var(--secondary);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text);
+    background-color: var(--background);
+}
+
+.login-page {
+    background: linear-gradient(135deg, #1B5E20, #4CAF50);
+}
+
+.login-card {
+    border: none;
+    border-radius: 8px;
+    background-color: var(--white);
+    width: 420px;
+    max-width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.login-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333333;
+    margin: 0;
+}
+
+.btn-login {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.btn-login:hover {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.custom-navbar {
+    background-color: var(--primary);
+    min-height: 65px;
+}
+
+.sidebar {
+    background-color: #1A331E;
+    min-height: calc(100vh - 65px);
+    padding: 25px 15px;
+}
+
+.sidebar-title {
+    color: #A3B8A7;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.sidebar a {
+    display: block;
+    color: #E2EFE4;
+    text-decoration: none;
+    padding: 13px 15px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar a:hover, .sidebar a.active {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 600;
+}
+
+.dashboard-content {
+    padding: 30px;
+}
+
+.welcome-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.welcome-small {
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.date-box {
+    background-color: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    color: #666;
+}
+
+.dashboard-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 100%;
+    border: 1px solid var(--border);
+}
+
+.card-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+}
+
+.card-icon.orange { background-color: #FFF0E2; }
+.card-icon.green { background-color: #E8F5E9; }
+.card-icon.blue { background-color: #E3F2FD; }
+.card-icon.red { background-color: #FDECEC; }
+
+.card-info p {
+    color: #777;
+    font-size: 13px;
+    margin: 0;
+}
+
+.card-info h2 {
+    font-size: 24px;
+    margin: 5px 0;
+    color: var(--text);
+}
+
+.content-card {
+    background-color: white;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 22px;
+    height: 100%;
+}
+
+.status-completed {
+    color: #2E7D32;
+    font-weight: bold;
+    background-color: #E8F5E9;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+
+.status-pending {
+    color: #D97706;
+    font-weight: bold;
+    background-color: #FFF3CD;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+
+.status-out {
+    color: #C62828;
+    font-weight: bold;
+    background-color: #FDECEC;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+
+.dashboard-footer {
+    text-align: center;
+    padding: 30px 0 10px;
+    color: #999;
+    font-size: 11px;
+}
+
+@media (max-width: 991px) {
+    .sidebar { min-height: auto; }
+    .sidebar a { display: inline-block; margin-right: 5px; }
+}
