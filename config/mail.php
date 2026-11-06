@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+'admin_address' => env('ADMIN_EMAIL'),
     /*
     |--------------------------------------------------------------------------
     | Default Mailer

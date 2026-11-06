@@ -227,14 +227,28 @@
             </div>
         </div>
 
-        <div class="panel">
-            <div class="panel-header">
-                <h2>Product List</h2>
+      <div class="panel-header">
+    <h2>Product List</h2>
 
-                <a href="{{ route('products.create') }}" class="btn btn-primary">
-                    + Add Product
-                </a>
-            </div>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+
+        <a href="{{ route('exports.products') }}"
+           class="btn btn-primary">
+            Export CSV
+        </a>
+
+        <a href="{{ route('exports.products.pdf') }}"
+           class="btn btn-edit">
+            Export PDF
+        </a>
+
+        <a href="{{ route('products.create') }}"
+           class="btn btn-primary">
+            + Add Product
+        </a>
+
+    </div>
+</div>
 
             <table>
                 <thead>

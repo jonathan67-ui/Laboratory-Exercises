@@ -4,8 +4,41 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\InventoryController;
-
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\PurchaseOrderController;
 // Main page: login for guests, inventory for logged-in users
+use App\Services\SearchService;
+use Illuminate\Http\Request;
+use App\Http\Controllers\SupplierPerformanceController;
+use App\Http\Controllers\ExportController;
+Route::get(
+    '/supplier-performance',
+    [SupplierPerformanceController::class, 'index']
+)->name('supplier-performance.index');
+// Product CSV Export
+Route::get('/exports/products', [ExportController::class, 'productsCsv'])
+    ->name('exports.products');
+ Route::get('/exports/products/pdf', [ExportController::class, 'productsPdf'])
+    ->name('exports.products.pdf');
+Route::middleware('auth')->group(function () {
+    Route::get('/supplier-performance', [
+        SupplierPerformanceController::class,
+        'index'
+    ])->name('suppliers.performance');
+});
+Route::middleware('auth')->group(function () {
+    Route::get('/advanced-search', function (Request $request, SearchService $search) {
+        $products = $search->products($request->all());
+        $orders = $search->purchaseOrders($request->all());
+        $transactions = $search->transactions($request->all());
+
+        return view('search.index', compact(
+            'products',
+            'orders',
+            'transactions'
+        ));
+    })->name('search.index');
+});
 Route::get('/', function () {
     if (auth()->check()) {
         return redirect()->route('inventory.index');
@@ -31,6 +64,28 @@ Route::middleware('guest')->group(function () {
 
 // Product and inventory pages: logged-in users only
 Route::middleware('auth')->group(function () {
+    Route::resource('purchase-orders', PurchaseOrderController::class);
+
+Route::post(
+    'purchase-orders/{purchase_order}/approve',
+    [PurchaseOrderController::class, 'approve']
+)->name('purchase-orders.approve');
+
+Route::post(
+    'purchase-orders/{purchase_order}/reject',
+    [PurchaseOrderController::class, 'reject']
+)->name('purchase-orders.reject');
+
+Route::post(
+    'purchase-orders/{purchase_order}/send',
+    [PurchaseOrderController::class, 'send']
+)->name('purchase-orders.send');
+
+Route::post(
+    'purchase-orders/{purchase_order}/receive',
+    [PurchaseOrderController::class, 'receive']
+)->name('purchase-orders.receive');
+    Route::resource('suppliers', SupplierController::class);
     Route::post('/logout', [AuthController::class, 'logout'])
         ->name('logout');
 

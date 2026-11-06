@@ -342,7 +342,14 @@
            href="{{ route('inventory.index') }}">
             ▦ &nbsp; Dashboard
         </a>
-
+<a class="nav-link"
+   href="{{ route('suppliers.index') }}">
+    ♙ &nbsp; Suppliers
+</a>
+<a class="nav-link"
+   href="{{ route('purchase-orders.index') }}">
+    📦 &nbsp; Purchase Orders
+</a>
         <a class="nav-link"
            href="{{ route('products.index') }}">
             ◈ &nbsp; Products
